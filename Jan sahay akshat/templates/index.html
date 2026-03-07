@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanSahay | Citizen AI Intelligence Portal</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        :root { 
+            --navy-deep: #001f3f; 
+            --navy-standard: #003366;
+            --accent-gold: #ff9933; 
+            --surface-glass: rgba(255, 255, 255, 0.92);
+            --transition-bounce: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        body { 
+            background: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 51, 102, 0.03) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, rgba(255, 153, 51, 0.03) 0, transparent 50%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1e293b;
+            min-height: 100vh;
+        }
+
+        /* Enterprise Navbar */
+        .navbar { 
+            background: var(--navy-standard); 
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid var(--accent-gold);
+            padding: 1rem 0;
+        }
+        .navbar-brand { font-weight: 800; letter-spacing: -0.5px; }
+
+        /* Modern Typography */
+        .hero-title { 
+            font-weight: 800; 
+            font-size: 3.5rem; 
+            line-height: 1.1; 
+            color: var(--navy-deep);
+            margin-bottom: 1.5rem;
+        }
+
+        /* The "Glassmorphism" Logic */
+        .glass-elevation {
+            background: var(--surface-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            transition: var(--transition-bounce);
+        }
+
+        /* Smart Search Engine Input */
+        .search-wrapper {
+            margin-top: -40px;
+            position: relative;
+            z-index: 10;
+        }
+        .tracking-input {
+            border-radius: 100px 0 0 100px;
+            padding: 1.2rem 2rem;
+            border: 2px solid transparent;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .tracking-input:focus {
+            border-color: var(--accent-gold);
+            box-shadow: 0 10px 30px rgba(255, 153, 51, 0.2);
+            outline: none;
+        }
+
+        /* Action Buttons */
+        .btn-primary-action { 
+            background: var(--navy-standard); 
+            color: white; 
+            border-radius: 14px; 
+            padding: 1rem 2rem; 
+            font-weight: 700; 
+            border: none;
+            transition: var(--transition-bounce);
+        }
+        .btn-primary-action:hover {
+            background: var(--navy-deep);
+            transform: scale(1.02);
+        }
+
+        .btn-track { 
+            background: var(--accent-gold); 
+            color: white; 
+            border-radius: 0 100px 100px 0; 
+            padding: 0 2rem; 
+            height: 64px;
+            font-weight: 700; 
+            border: none;
+            transition: 0.3s;
+        }
+
+        .status-pill { padding: 6px 16px; border-radius: 100px; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand text-white" href="/">
+                <i class="fas fa-landmark-flag me-2"></i>JANSAHAY <span class="fw-light">by Akshat Gaur</span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <a href="/schemes" class="btn btn-warning btn-sm rounded-pill px-3 fw-bold shadow-sm">
+                    <i class="fas fa-gift me-1"></i> Welfare Intelligence
+                </a>
+                <a href="/login" class="btn btn-outline-light btn-sm rounded-pill px-3">
+                    <i class="fas fa-user-shield me-1"></i> Admin
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="text-center mb-5 pb-4">
+            <h1 class="hero-title">Next-Gen Governance<br><span class="text-warning">Simplified by AI.</span></h1>
+            <p class="text-muted lead mx-auto" style="max-width: 600px;">
+                Automated departmental routing and intelligence-led resolution for modern citizens.
+            </p>
+        </div>
+
+        <div class="row justify-content-center search-wrapper mb-5">
+            <div class="col-lg-7">
+                <div class="input-group">
+                    <input type="text" id="trackId" class="form-control tracking-input" placeholder="Query Ticket Status (e.g. TKT-12345)">
+                    <button class="btn btn-track shadow" onclick="trackGrievance()">Locate Record</button>
+                </div>
+                
+                <div id="trackResult" class="mt-4 p-4 glass-elevation text-center d-none animate__animated animate__fadeIn">
+                    <div class="small text-uppercase text-muted mb-2">Record Located</div>
+                    <h5 class="fw-bold text-navy" id="resName">--</h5>
+                    <div class="my-3"><span id="resStatus" class="status-pill bg-primary text-white">--</span></div>
+                    <div class="d-flex justify-content-center gap-3 mt-2">
+                        <div class="text-muted small">Department: <span id="resDept" class="fw-bold">--</span></div>
+                        <div class="text-muted small">AI Score: <span id="resPriority" class="fw-bold">--</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-lg-8">
+                <div class="glass-elevation p-5" id="formWrapper">
+                    <h3 class="fw-bold mb-4"><i class="fas fa-pen-nib text-primary me-2"></i>Initialize New Grievance</h3>
+                    
+                    <form id="grievanceForm">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" id="name" class="form-control form-control-lg bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" id="email" class="form-control form-control-lg bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">District</label>
+                                <input type="text" id="district" class="form-control form-control-lg bg-light border-0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">PIN Code</label>
+                                <input type="text" id="pincode" class="form-control form-control-lg bg-light border-0" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Problem Context</label>
+                                <textarea id="complaint" class="form-control form-control-lg bg-light border-0" rows="5" placeholder="Describe the issue..." required></textarea>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary-action w-100 shadow" id="submitBtn">Finalize Submission</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div id="ticketBox" class="text-center d-none py-5 animate__animated animate__zoomIn">
+                        <i class="fas fa-check-double text-success fa-5x mb-4"></i>
+                        <h2 class="fw-bold">Protocol Executed</h2>
+                        <p class="text-muted mb-4">Reference Token Generated:</p>
+                        <div class="h1 fw-bold text-primary mb-4" id="displayTicketId">--</div>
+                        <div class="d-flex justify-content-center gap-2">
+                            <span class="badge bg-light text-navy border py-2 px-3">AI Tag: <span id="displayCategory">--</span></span>
+                            <span class="badge bg-light text-navy border py-2 px-3">Priority: <span id="displayPriority">--</span></span>
+                        </div>
+                        <button class="btn btn-link mt-5 text-decoration-none" onclick="location.reload()">Lodge Another Record</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-5">
+        <p class="text-muted small mb-0">Designed & Engineered by <strong>Akshat Gaur</strong></p>
+        <p class="text-muted" style="font-size: 0.7rem;">JanSahay Enterprise AI Infrastructure &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Submission Logic
+        document.getElementById('grievanceForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '<i class="fas fa-microchip fa-spin me-2"></i>Neural Processing...';
+            btn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('district', document.getElementById('district').value);
+            formData.append('pincode', document.getElementById('pincode').value);
+            formData.append('complaint_text', document.getElementById('complaint').value);
+
+            const res = await fetch('/submit_complaint', { method: 'POST', body: formData });
+            const data = await res.json();
+
+            document.getElementById('formWrapper').classList.add('animate__animated', 'animate__fadeOut');
+            setTimeout(() => {
+                document.getElementById('grievanceForm').classList.add('d-none');
+                document.getElementById('ticketBox').classList.remove('d-none');
+                document.getElementById('formWrapper').classList.remove('animate__fadeOut');
+                document.getElementById('formWrapper').classList.add('animate__fadeIn');
+                document.getElementById('displayTicketId').innerText = data.ticket_id;
+                document.getElementById('displayCategory').innerText = data.category;
+                document.getElementById('displayPriority').innerText = data.priority;
+            }, 400);
+        });
+
+        // Tracking Logic (FIXED)
+        async function trackGrievance() {
+            const tid = document.getElementById('trackId').value;
+            if(!tid) return;
+
+            const formData = new FormData();
+            formData.append('ticket_id', tid);
+
+            const res = await fetch('/track_status', { 
+                method: 'POST', 
+                body: new URLSearchParams(formData) 
+            });
+            const data = await res.json();
+            
+            const resDiv = document.getElementById('trackResult');
+            if(data.success) {
+                resDiv.classList.remove('d-none');
+                document.getElementById('resName').innerText = "Citizen: " + data.name;
+                document.getElementById('resDept').innerText = data.category;
+                document.getElementById('resStatus').innerText = data.status;
+                document.getElementById('resPriority').innerText = data.priority;
+            } else { 
+                alert(data.message || "Reference ID Not Found."); 
+            }
+        }
+    </script>
+</body>
+</html>

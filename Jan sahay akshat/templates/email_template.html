@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .wrapper { font-family: 'Inter', -apple-system, sans-serif; max-width: 600px; margin: auto; border: 1px solid #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .header { background: #051C2C; color: #ffffff; padding: 40px 20px; text-align: center; }
+        .content { padding: 30px; color: #334155; line-height: 1.7; }
+        .status-box { background: #f8fafc; border-left: 4px solid #C5A059; padding: 25px; margin: 25px 0; }
+        .footer { background: #f1f5f9; padding: 20px; text-align: center; font-size: 11px; color: #64748b; }
+        .signature { margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px; font-weight: bold; color: #051C2C; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1 style="margin:0; font-size: 24px;">JANSAHAY Intelligence</h1>
+            <p style="margin:5px 0 0; opacity:0.8; font-size: 14px;">Official Communication Protocol</p>
+        </div>
+        <div class="content">
+            <p>Dear <strong>{{ name }}</strong>,</p>
+            <p>This is a formal update regarding your grievance record. Our AI-driven infrastructure has processed a lifecycle update for your submission.</p>
+            
+            <div class="status-box">
+                <strong>Ticket Reference:</strong> {{ ticket_id }}<br>
+                <strong>Department:</strong> {{ category }}<br>
+                <strong>Current Status:</strong> <span style="color:#051C2C; font-weight:bold;">{{ status|upper }}</span>
+            </div>
+
+            <p>You may track live resolution updates via our portal using your unique reference token.</p>
+            
+            <div class="signature">
+                JanSahay Administration<br>
+                <span style="font-weight:normal; font-size:12px; color:#64748b;">Lead Systems Architect: <strong>Akshat Gaur</strong></span>
+            </div>
+        </div>
+        <div class="footer">
+            &copy; 2026 JANSAHAY Global Systems. Confidentiality Notice: This is an automated report.
+        </div>
+    </div>
+</body>
+</html>
