@@ -9,16 +9,16 @@ The system integrates Natural Language Processing (NLP) and Predictive Analytics
 ## 📸 System Preview
 
 ### 🔹 Operations Dashboard
-![Dashboard](./screenshots/dashboard.png)
+![Dashboard](dashboard.png)
 
 ### 🔹 Grievance Submission System
-![Form](./screenshots/form.png)
+![Form](form.png)
 
 ### 🔹 Welfare Intelligence Engine
-![Welfare](./screenshots/welfare.png)
+![Welfare](welfare.png)
 
 ### 🔹 Admin Monitoring Log
-![AdminLog](./screenshots/adminlog.png)
+![AdminLog](adminlog.png)
 
 ---
 
