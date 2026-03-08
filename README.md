@@ -8,8 +8,9 @@ The system integrates Natural Language Processing (NLP) and Predictive Analytics
 
 ## 📸 System Preview
 
-## 🎥 Demo Video
-[Watch Demo](demo.mp4)
+## 🎥 Demo Video  
+
+[▶ Watch JanSahay Demo](https://github.com/akshatgaur64/jansahay-ai-grievance-system/raw/main/demo.mp4)
 
 ### 🔹 Operations Dashboard
 ![Dashboard](dashboard.png)
