@@ -8,6 +8,9 @@ The system integrates Natural Language Processing (NLP) and Predictive Analytics
 
 ## 📸 System Preview
 
+## 🎥 Demo Video
+[Watch Demo](demo.mp4)
+
 ### 🔹 Operations Dashboard
 ![Dashboard](dashboard.png)
 
